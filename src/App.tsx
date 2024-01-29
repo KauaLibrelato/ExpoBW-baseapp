@@ -1,14 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import ToastManager from 'toastify-react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
+      <ToastManager style={{ width: '100%' }} />
       <Text>Open up App.js to start working on your app!</Text>
-      <AntDesign name="back" size={24} color="black" />
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
     </View>
   );
 }
