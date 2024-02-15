@@ -1,23 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import ToastManager from 'toastify-react-native';
+import {ThemeProvider} from './context/Theme/ThemeProvider';
+import Routes from './routes';
 
 export default function App() {
+  const queryClient = new QueryClient();
   return (
-    <View style={styles.container}>
-      <ToastManager style={{ width: '100%' }} />
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="dark" />
-    </View>
+    <QueryClientProvider client={queryClient}>
+      <GestureHandlerRootView style={{flex: 1}}>
+        <SafeAreaView style={{flex: 1}}>
+          <ThemeProvider>
+            <ToastManager />
+            <Routes />
+          </ThemeProvider>
+        </SafeAreaView>
+      </GestureHandlerRootView>
+    </QueryClientProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
